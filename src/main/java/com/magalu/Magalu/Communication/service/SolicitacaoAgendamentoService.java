@@ -26,4 +26,10 @@ public class SolicitacaoAgendamentoService {
         return obj.orElseThrow(() -> new ObjectNotFoundException(
                 "Objeto não encontrado! Id: " + id + ", Tipo: " + SolicitacaoAgendamentoModel.class.getName()));
     }
+
+    public SolicitacaoAgendamentoModel updateSituacao(Integer id){
+        SolicitacaoAgendamentoModel obj = find(id);
+        obj.setSituacao("cancelado");
+        return repository.save(obj);
+    }
 }
